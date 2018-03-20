@@ -1017,37 +1017,42 @@ class Ppgutc(object):
     def __str__(self):
         return "ppgutc"
 
-#-------------------------------------------------------------------------
-#
-# program entry point
 
-# process command line
-parser = OptionParser()
-parser.add_option("-i", "--infile",
-                  dest="infile", default="book-utf8.txt",
-                  help="input file: file-src.txt")
-parser.add_option("-o", "--outfile",
-                  dest="outfile", default="glog.txt",
-                  help="outfile file")
-parser.add_option("-s", "--skip",
-                  dest="skiptests", default="",
-                  help="skip indicated tests")
-parser.add_option("-a", "--all",
-                  action="store_true",
-                  help="show all reports")
-parser.add_option("-d", "--debug",
-                  action="store_true",
-                  help="debug (developer only)")
-parser.add_option("-v", "--version",
-                  action="store_true",
-                  help="ppgut version")
-(options, args) = parser.parse_args()
+def parse_args():
+    parser = OptionParser()
+    parser.add_option("-i", "--infile",
+                      dest="infile", default="book-utf8.txt",
+                      help="input file: file-src.txt")
+    parser.add_option("-o", "--outfile",
+                      dest="outfile", default="glog.txt",
+                      help="outfile file")
+    parser.add_option("-s", "--skip",
+                      dest="skiptests", default="",
+                      help="skip indicated tests")
+    parser.add_option("-a", "--all",
+                      action="store_true",
+                      help="show all reports")
+    parser.add_option("-d", "--debug",
+                      action="store_true",
+                      help="debug (developer only)")
+    parser.add_option("-v", "--version",
+                      action="store_true",
+                      help="ppgut version")
+    return parser.parse_args()
 
-if options.version:
-    print("ppgut {}".format(__version__))
-    exit(1)
-if not options.infile:
-    parser.error('source file required')
 
-ppgutc = Ppgutc(options)
-ppgutc.run()
+def main():
+    (options, args) = parse_args()
+
+    if options.version:
+        print("ppgut {}".format(__version__))
+        return 1
+    if not options.infile:
+        parser.error('source file required')
+
+    ppgutc = Ppgutc(options)
+    ppgutc.run()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
