@@ -78,60 +78,60 @@ class Ppgutc(object):
         # some of the actionlist is borrowed from guiguts regex.rc
         self.actionlist = (
 
-        (1, "r", "2,2", "opening square bracket followed by anything but F, S, I, G or number", '\[[^FSIG\d].*?\]'),
-        (2, "r", "2,2", "dates that are missing a space between the month and year", '([0-9]),([0-9]{4})'),
-        (3, "r", "2,2", "string \"uess\" not preceded by a g", '([^gG])uess'),
-        (4, "r", "2,2", "string that contains hl preceded by one of (a,b,i,m,o or u) followed by i or e", '([abimou])hl([ie])'),
+        (1, "r", "2,2", "opening square bracket followed by anything but F, S, I, G or number", r'\[[^FSIG\d].*?\]'),
+        (2, "r", "2,2", "dates that are missing a space between the month and year", r'([0-9]),([0-9]{4})'),
+        (3, "r", "2,2", "string \"uess\" not preceded by a g", r'([^gG])uess'),
+        (4, "r", "2,2", "string that contains hl preceded by one of (a,b,i,m,o or u) followed by i or e", r'([abimou])hl([ie])'),
         (5, "m", "2,2", "adjacent white-space characters", "check_adjws"),
-        # (6, "r", "2,2", "initials without a space between them", '([A-Z])\.([A-Z])\.'),
-        (7, "r", "2,2", "paragraph that ends in a comma", ',(?=\n\n)'),
-        (8, "r", "2,2", "string containing at least 5 consonants in a row", '[b-df-hj-np-tv-xz]{5,}'),
-        (9, "r", "2,2", "full stop (period) with the following word starting with a lower case character", '\.("?\n\s*"?\p{Lower})'),
-        (10, "r", "2,2", "period followed by a space and a lower-case letter", '\.(\s\p{IsLower})'),
-        (11, "r", "2,2", "string that starts with hl", '\\bhl'),
-        (12, "r", "2,2", "string that starts with hr", '\\bhr'),
-        (13, "r", "2,2", "string that starts with rn", '\\brn'),
-        (14, "r", "2,2", "string ii not at the beginning of a word", '\\Bii'),
-        (15, "r", "2,2", "repeated words or word sequences", '\\b(\S\S+)\s\\1\\b'),
-        (16, "r", "2,2", "spaced single (curly) quote dangling on the end of a line", '\s’$'),
-        (17, "r", "2,2", "spaced single straight quote dangling on the end of a line", '\s\'$'),
-        (18, "r", "2,0", "trailing spaces", ' $'),
-        (19, "r", "2,2", "string that contains cb", 'cb'),
-        (20, "r", "2,2", "string that ends in cl", 'cl\\b'),
-        (21, "r", "2,2", "string that contains gbt", 'gbt'),
-        (22, "r", "2,2", "character strings that end with j (s/b semicolon)", '(\w+)j\\b'),
-        (23, "r", "2,2", "string containing mcnt (s/b ment)", 'mcnt'),
-        (24, "r", "2,2", "string that contains rnb, rnm or rnp", 'rn([bmp])'),
-        (25, "r", "2,2", "string that contains tb", 'tb'),
-        (26, "r", "2,2", "string that contains tii", 'tii'),
-        (27, "r", "2,2", "string that contains tli", 'tli'),
-        (28, "r", "2,2", "string that ends with a v (s/b y)", '(\w+)v\\b'),
-        (29, "r", "2,2", "pairs of guillemots (across several lines)", '«[^»]+»\n?'),
-        (30, "r", "2,2", "the abreviation \"&c.\" that doesn\'t have a period after it", '&c(,| |$)'),
-        (31, "r", "2,2", "line that starts with selected punctuation", '^[!;:,.?]'),
-        (32, "r", "2,2", "line that starts with hyphen and then non-hyphen", '^-[^-]'),
-        (33, "r", "2,2", "tabs", '\t'),
-        (34, "r", "2,2", "soft hyphens", '\xAD'),
-        (35, "r", "2,2", "mixed dashes/hyphens", '(—-)|(-—)'),
-        (36, "r", "2,2", "non-breaking spaces", ' '),
-        (37, "r", "2,2", "I masquerading as an exclamation point", 'I[”"]'),
-        (38, "r", "2,2", "disjointed contractions", '\s[\'’](m|ve|ll|t)\\b'),
-        (39, "r", "2,2", "abandoned Blank Page flags", 'Blank Page'),
-        (40, "r", "2,2", "title abbreviation punctuation errors", 'Mr,|Mrs,|Dr,'),
-        (41, "r", "2,2", "spaced punctuation", '\s[\?!,]'),
-        (42, "r", "2,2", "floating quotes", '(^["\'“‘’"]\s)|(\s["\'“‘’"]\s)|(\s["\'“‘’"]$)'),
-        #(43, "r", "2,2", "comma spacing errors", '(\w,\w)|(\s,\D)|(\s,\s)|(^,)|(\s,$)'),
+        # (6, "r", "2,2", "initials without a space between them", r'([A-Z])\.([A-Z])\.'),
+        (7, "r", "2,2", "paragraph that ends in a comma", r',(?=\n\n)'),
+        (8, "r", "2,2", "string containing at least 5 consonants in a row", r'[b-df-hj-np-tv-xz]{5,}'),
+        (9, "r", "2,2", "full stop (period) with the following word starting with a lower case character", r'\.("?\n\s*"?\p{Lower})'),
+        (10, "r", "2,2", "period followed by a space and a lower-case letter", r'\.(\s\p{IsLower})'),
+        (11, "r", "2,2", "string that starts with hl", r'\\bhl'),
+        (12, "r", "2,2", "string that starts with hr", r'\\bhr'),
+        (13, "r", "2,2", "string that starts with rn", r'\\brn'),
+        (14, "r", "2,2", "string ii not at the beginning of a word", r'\\Bii'),
+        (15, "r", "2,2", "repeated words or word sequences", r'\\b(\S\S+)\s\\1\\b'),
+        (16, "r", "2,2", "spaced single (curly) quote dangling on the end of a line", r'\s’$'),
+        (17, "r", "2,2", "spaced single straight quote dangling on the end of a line", r'\s\'$'),
+        (18, "r", "2,0", "trailing spaces", r' $'),
+        (19, "r", "2,2", "string that contains cb", r'cb'),
+        (20, "r", "2,2", "string that ends in cl", r'cl\\b'),
+        (21, "r", "2,2", "string that contains gbt", r'gbt'),
+        (22, "r", "2,2", "character strings that end with j (s/b semicolon)", r'(\w+)j\\b'),
+        (23, "r", "2,2", "string containing mcnt (s/b ment)", r'mcnt'),
+        (24, "r", "2,2", "string that contains rnb, rnm or rnp", r'rn([bmp])'),
+        (25, "r", "2,2", "string that contains tb", r'tb'),
+        (26, "r", "2,2", "string that contains tii", r'tii'),
+        (27, "r", "2,2", "string that contains tli", r'tli'),
+        (28, "r", "2,2", "string that ends with a v (s/b y)", r'(\w+)v\\b'),
+        (29, "r", "2,2", "pairs of guillemots (across several lines)", r'«[^»]+»\n?'),
+        (30, "r", "2,2", "the abreviation \"&c.\" that doesn\'t have a period after it", r'&c(,| |$)'),
+        (31, "r", "2,2", "line that starts with selected punctuation", r'^[!;:,.?]'),
+        (32, "r", "2,2", "line that starts with hyphen and then non-hyphen", r'^-[^-]'),
+        (33, "r", "2,2", "tabs", r'\t'),
+        (34, "r", "2,2", "soft hyphens", r'\xAD'),
+        (35, "r", "2,2", "mixed dashes/hyphens", r'(—-)|(-—)'),
+        (36, "r", "2,2", "non-breaking spaces", r' '),
+        (37, "r", "2,2", "I masquerading as an exclamation point", r'I[”"]'),
+        (38, "r", "2,2", "disjointed contractions", r'\s[\'’](m|ve|ll|t)\\b'),
+        (39, "r", "2,2", "abandoned Blank Page flags", r'Blank Page'),
+        (40, "r", "2,2", "title abbreviation punctuation errors", r'Mr,|Mrs,|Dr,'),
+        (41, "r", "2,2", "spaced punctuation", r'\s[\?!,]'),
+        (42, "r", "2,2", "floating quotes", r'(^["\'“‘’"]\s)|(\s["\'“‘’"]\s)|(\s["\'“‘’"]$)'),
+        #(43, "r", "2,2", "comma spacing errors", r'(\w,\w)|(\s,\D)|(\s,\s)|(^,)|(\s,$)'),
         (43, "m", "2,2", "comma spacing errors", "check_commas"),
-        (44, "r", "2,2", "mid-sentence stop", '[^\.]\.\s?[a-z]'),
-        (45, "r", "2,2", "period space non-capital letter, punct or italic", '[^\.]\. [^A-Z‘’“"„_]'),
-        (46, "r", "2,2", "ellipsis check", '([^\.]\.\.\. )|(\.\.\.\.[^\s])|([^\.]\.\.[^\.])|(\.\.\.\.\.+)'),
-        (47, "r", "2,2", "floating quotes", '( [“”] )|(^[“”] )|( [“”]$)'),
-        (48, "r", "2,2", "HTML tags in text version", '<\/?.*?>'),
-        (49, "r", "2,2", "dash check", '(—— )|(— )|( —)|(———)'),
-        (50, "r", "2,2", "missing paragraph break", '(” +“)|(" +")'),
-        (51, "r", "2,2", "quote direction", '([\.,;!?]+[‘“])|([A-Za-z]+[‘“])|(“ )|( ”)'),
+        (44, "r", "2,2", "mid-sentence stop", r'[^\.]\.\s?[a-z]'),
+        (45, "r", "2,2", "period space non-capital letter, punct or italic", r'[^\.]\. [^A-Z‘’“"„_]'),
+        (46, "r", "2,2", "ellipsis check", r'([^\.]\.\.\. )|(\.\.\.\.[^\s])|([^\.]\.\.[^\.])|(\.\.\.\.\.+)'),
+        (47, "r", "2,2", "floating quotes", r'( [“”] )|(^[“”] )|( [“”]$)'),
+        (48, "r", "2,2", "HTML tags in text version", r'<\/?.*?>'),
+        (49, "r", "2,2", "dash check", r'(—— )|(— )|( —)|(———)'),
+        (50, "r", "2,2", "missing paragraph break", r'(” +“)|(" +")'),
+        (51, "r", "2,2", "quote direction", r'([\.,;!?]+[‘“])|([A-Za-z]+[‘“])|(“ )|( ”)'),
         (52, "r", "2,2", "a string that starts with one of c, s or w, li, then a vowel excluding 'client'",
-                        '(?!client)\\b([csw])li([aeiou])'),
+                        r'(?!client)\\b([csw])li([aeiou])'),
         (53, "m", "0,0", "Check for American and British abbreviation conventions", "check_ambrit"),
         (54, "m", "0,0", "Check for mixed curly/straight quotation marks", "check_qmarks"),
         (55, "m", "0,0", "Short line check", "check_short"),
@@ -139,34 +139,34 @@ class Ppgutc(object):
         (57, "m", "0,0", "Asterisk check", "check_ast"),
         (58, "m", "0,0", "Letter frequency", "check_letfreq"),
         (59, "m", "0,0", "To-day/Today consistency", "check_today"),
-        (60, "r", "2,2", "punctuation after \"the\"", '\\b[Tt]he[\.\,\?\'\"\;\:\!\@\#\$\%\^\&\(\)]'),
-        (61, "r", "2,2", "standalone numeral zero in text", '\s0\s'),
-        (62, "r", "2,2", "standalone numeral one in text", '\\b1\\b'),
-        (63, "r", "2,2", "mixed numereral and alphabetic", '([A-Za-z]\d)|(\d[A-Za-z])'),
-        (64, "r", "2,2", "ampersand in text", '&'),
-        (65, "r", "2,2", "unconverted \"--\" to \"—\"", '(\w--\w)|(\w--)|(--\w)'),
-        (66, "r", "2,2", "white space at end of line", ' $'),
-        (67, "r", "2,2", "dot + comma", '\.,'),
-        (68, "r", "2,2", "double dash broken at line end", '—\n—'),
-        (69, "r", "2,2", "single character line", '^.$'),
+        (60, "r", "2,2", "punctuation after \"the\"", r'\\b[Tt]he[\.\,\?\'\"\;\:\!\@\#\$\%\^\&\(\)]'),
+        (61, "r", "2,2", "standalone numeral zero in text", r'\s0\s'),
+        (62, "r", "2,2", "standalone numeral one in text", r'\\b1\\b'),
+        (63, "r", "2,2", "mixed numereral and alphabetic", r'([A-Za-z]\d)|(\d[A-Za-z])'),
+        (64, "r", "2,2", "ampersand in text", r'&'),
+        (65, "r", "2,2", "unconverted \"--\" to \"—\"", r'(\w--\w)|(\w--)|(--\w)'),
+        (66, "r", "2,2", "white space at end of line", r' $'),
+        (67, "r", "2,2", "dot + comma", r'\.,'),
+        (68, "r", "2,2", "double dash broken at line end", r'—\n—'),
+        (69, "r", "2,2", "single character line", r'^.$'),
         (70, "m", "0,0", "Check common he/be errors", "check_hebe"),
         (71, "m", "0,0", "Check common had/bad errors", "check_hadbad"),
         (72, "m", "0,0", "Check common hut/but errors", "check_hutbut"),
-        (73, "r", "2,2", "incorrectly split paragraphs", '\n\n[a-z]'),
-        (74, "r", "2,2", "double punctuation", '(,\.)|(\.,)|(,,)|([^\.]\.\.[^\.])'),
+        (73, "r", "2,2", "incorrectly split paragraphs", r'\n\n[a-z]'),
+        (74, "r", "2,2", "double punctuation", r'(,\.)|(\.,)|(,,)|([^\.]\.\.[^\.])'),
         (76, "m", "2,2", "words usually not followed by a comma", "check_wordsnc"),
         (77, "m", "2,2", "words usually not followed by a period", "check_wordsnp"),
         (78, "m", "2,2", "two letter combination not expected at word end", "check_words2e"),
         (79, "m", "2,2", "two letter combination not expected at word start", "check_words2s"),
-        (80, "r", "2,2", "unexpected HTML entity", '&\w+;'),
+        (80, "r", "2,2", "unexpected HTML entity", r'&\w+;'),
         (81, "m", "0,0", "Common scannos check", "check_scannos"),
-        (82, "r", "2,2", "special case of 'S instead of 's at end of word", "[a-z]['’]S\\b"),
-        (83, "r", "2,2", "unexpected standalone letter", " [^AIa„à\|0-9=\-+×÷\* ] "),
-        (84, "r", "2,2", "mixed case", "(\\b[A-Z]\w*?[A-Z][a-z]\w*\\b)|(\\b[A-Z]\w*?[a-z][A-Z]\w*\\b)|(\\b\w*?[a-z][A-Z]\w*\\b)"),
-        (85, "r", "2,2", "broken hyphen", '([A-Za-z]\- [A-Za-z])|([A-Za-z] \-[A-Za-z])'),
+        (82, "r", "2,2", "special case of 'S instead of 's at end of word", r"[a-z]['’]S\\b"),
+        (83, "r", "2,2", "unexpected standalone letter", r" [^AIa„à\|0-9=\-+×÷\* ] "),
+        (84, "r", "2,2", "mixed case", r"(\\b[A-Z]\w*?[A-Z][a-z]\w*\\b)|(\\b[A-Z]\w*?[a-z][A-Z]\w*\\b)|(\\b\w*?[a-z][A-Z]\w*\\b)"),
+        (85, "r", "2,2", "broken hyphen", r'([A-Za-z]\- [A-Za-z])|([A-Za-z] \-[A-Za-z])'),
         (86, "m", "0,0", "Check mixed turned-comma and apostrophe", "check_turnedcomma"),
         (87, "m", "0,0", "Unexpected/ususual paragraph end", "check_paraend"),
-        (88, "r", "3,3", "Apostrophe outside italic markup", "_’")
+        (88, "r", "3,3", "Apostrophe outside italic markup", r"_’")
         );
 
         # still to code:
@@ -1017,37 +1017,42 @@ class Ppgutc(object):
     def __str__(self):
         return "ppgutc"
 
-#-------------------------------------------------------------------------
-#
-# program entry point
 
-# process command line
-parser = OptionParser()
-parser.add_option("-i", "--infile",
-                  dest="infile", default="book-utf8.txt",
-                  help="input file: file-src.txt")
-parser.add_option("-o", "--outfile",
-                  dest="outfile", default="glog.txt",
-                  help="outfile file")
-parser.add_option("-s", "--skip",
-                  dest="skiptests", default="",
-                  help="skip indicated tests")
-parser.add_option("-a", "--all",
-                  action="store_true",
-                  help="show all reports")
-parser.add_option("-d", "--debug",
-                  action="store_true",
-                  help="debug (developer only)")
-parser.add_option("-v", "--version",
-                  action="store_true",
-                  help="ppgut version")
-(options, args) = parser.parse_args()
+def parse_args():
+    parser = OptionParser()
+    parser.add_option("-i", "--infile",
+                      dest="infile", default="book-utf8.txt",
+                      help="input file: file-src.txt")
+    parser.add_option("-o", "--outfile",
+                      dest="outfile", default="glog.txt",
+                      help="outfile file")
+    parser.add_option("-s", "--skip",
+                      dest="skiptests", default="",
+                      help="skip indicated tests")
+    parser.add_option("-a", "--all",
+                      action="store_true",
+                      help="show all reports")
+    parser.add_option("-d", "--debug",
+                      action="store_true",
+                      help="debug (developer only)")
+    parser.add_option("-v", "--version",
+                      action="store_true",
+                      help="ppgut version")
+    return parser.parse_args()
 
-if options.version:
-    print("ppgut {}".format(__version__))
-    exit(1)
-if not options.infile:
-    parser.error('source file required')
 
-ppgutc = Ppgutc(options)
-ppgutc.run()
+def main():
+    (options, args) = parse_args()
+
+    if options.version:
+        print("ppgut {}".format(__version__))
+        return 1
+    if not options.infile:
+        parser.error('source file required')
+
+    ppgutc = Ppgutc(options)
+    ppgutc.run()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
