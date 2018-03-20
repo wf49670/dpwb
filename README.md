@@ -1,4 +1,5 @@
 # dpwb
 DP Post Processor Workbench
 
-If you can read only one chapter to get going with Git, this is it. This chapter covers every basic command you need to do the vast majority of the things you’ll eventually spend your time doing with Git. By the end of the chapter, you should be able to configure and initialize a repository, begin and stop tracking files, and stage and commit changes. We’ll also show you how to set up Git to ignore certain files and file patterns, how to undo mistakes quickly and easily, how to browse the history of your project and view changes between commits, and how to push and pull from remote repositori
+This is a set of tools used in the final stage of ebook production: post-processing. It consists of a user-visible page (dpwb.php), a form handling page (dpwb-action.php) and a series of programs for the individual tests. All programs are written in Python3 or Go. Once the user asks the workbench to run the tests, each test contributes to a report that is presented back to the user for viewing or download.
+
