@@ -9,6 +9,43 @@
         table { border-collapse: collapse; }
         table, th, td { border: 1px solid black; }
         td { padding-left: 0.5em; padding-right: 1em;}
+td.tooltip{
+    position:relative;
+}
+td.tooltip::before {
+    content: attr(data-tooltip) ;
+    font-size: 12px;
+    position:absolute;
+    z-index: 999;
+    white-space:nowrap;
+    bottom:9999px;
+    left: 0;
+    background:#000;
+    color:#e0e0e0;
+    padding:0px 7px;
+    line-height: 24px;
+    height: 24px;
+    opacity: 0;
+}
+td.tooltip:hover::before {
+    opacity: 1;
+    top:22px;
+}
+td.tooltip:hover::after {
+    content: "";
+    opacity: 1;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+    z-index: 999;
+    position:absolute;
+    white-space:nowrap;
+    top:17px;
+    left: 0px;
+}
+     
     </style>
   </head>
 
@@ -22,7 +59,8 @@
 Drag and drop your text file on the "Choose File" button or click the button for a 
 dialog box.<br/>
 Once that file is ready, choose one
-test (for now) from the available checkboxes. Tests without checkboxes are not available yet.
+test (for now) from the available checkboxes.<br/>
+Tests without checkboxes are not available yet.
 Then click Submit.</p>
 
 <form action="test_action2.php" method="POST" enctype="multipart/form-data">
@@ -36,29 +74,30 @@ Then click Submit.</p>
     </tr>      
     <tr>
       <td><input type="radio" name="requested_test" value="ppgutc" checked="checked"/></td>
-      <td>Gutcheck clone </td>
+      <td class='tooltip'
+      data-tooltip="This program borrows checks from many other scattered programs, including the gutcheck (Gutenberg check) macros. It runs about eighty checks with more to be added.">Ppgutc gutcheck-type tests</td>
       <td>UTF-8 or Latin-1 text</td>
     </tr>
     <tr>
       <td><input type="radio" name="requested_test" value="pplev" /></td>
-      <td>Levenshtein Checks</td>
+      <td class='tooltip' data-tooltip="Pplev does Levenshtein or &quot;edit-distance&quot; checks on a UTF-8 text file. The Levenshtein distance between two words is the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other. Short edit distances can uncover inconsistent spellings, such as &quot;Marañon&quot; and &quot;Marañón&quot; in the same document.">Pplev edit distance checks</td>
       <td>UTF-8 or Latin-1 text</td>
     </tr>
     <tr>
       <td></td>
-      <td>PP PPV Checks</td>
+      <td class='tooltip' data-tooltip="This program performs specific checks on an HTML file and images in an images folder related to post-processing verification.">PP PPV Checks</td>
       <td>Zip file with HTML and images</td>
     </tr>   
     <tr>
       <td></td>
-      <td>PPSpell</td>
+      <td class='tooltip' data-tooltip="This is an online version of the ppspell program. It attempts to do an intelligent spell-check of a text file. For example, non-dictionary words that meet certain tests, such as frequency of occurence, are accepted as good words.">PPSpell</td>
       <td>UTF-8 text</td>
     </tr>  
   </table>
     <div style='margin-top:1em'>When ready, click Submit: <input type="submit" name="upload"/></div>
 </form>
 
-<p>It can take up to a minute for results to appear on the next page. Once they do, you may either
+<p>It can take up to a minute for results to appear on the next page.<br/>Once they do, you may either
   view or download the results.</p>
 
   </body>
