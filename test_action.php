@@ -2,11 +2,14 @@
 
    if(isset($_FILES['zipfile'])){
 
+      echo "You selected: ".$_POST["requested_test"] . "<br/>";
+      flush();
+
       # place to save error messages
       $errors= array();
 
       # have a working folder for the Workbench
-      $work="./results";  # temporary
+      $work="/home/uploads/incoming/Users/rfrank";  # temporary
       # $uploads_dir="/home/uploads/incoming";
       # $work=$uploads_dir."/"."wb";
 
@@ -50,9 +53,10 @@
       $cmd = "/usr/bin/clamscan -- " . escapeshellcmd($file_tmp);
       exec($cmd, $av_test_result, $av_retval);
       if ($av_retval == 0) {
-        print_r("AV pass.<br/>");
+        echo "virus scan: PASS.<br/>";
+        flush();
       } else {
-        print_r("AV fail. exiting");
+        echo "virus scan failed. exiting";
         exit(1);
       }
 
@@ -72,9 +76,10 @@
         if ($result === TRUE) {
           $zipArchive ->extractTo($work."/".$wbpn);
           $zipArchive ->close();
-          print_r("unzipped to upload folder");
+          echo "unzipped to (user:rfrank) upload folder<br/>";
+          flush();
         } else {
-          print_r("unable to unzip uploaded file");
+          echo("unable to unzip uploaded file");
           exit(1);
         }
 
@@ -83,5 +88,41 @@
         print_r($errors); 
       }
       finfo_close($finfo);
+
+      # the radio buttons tell us what test they want.
+      # dispatch here...
+
+      if ($_POST["requested_test"]=="ppgutc") {
+
+        # determine name of the uploaded -utf8 text file
+        $paths = glob($work."/".$wbpn."/*-utf8.txt");
+        echo "source file: ".$paths[0]."<br/>";
+
+        # run the program here
+        $scommand = 'python3 ppgutc.py' .
+                     ' -i ' . $paths[0] .
+                     ' -o ' . $work."/".$wbpn."/ppgutc-result.txt";
+        $command = escapeshellcmd($scommand);
+        echo "command: ". $command . "<br/>";
+        $output = shell_exec($command);          
+        echo "result is ".$wbpn."/ppgutc-result.txt in your user folder";
+      } 
+
+      if ($_POST["requested_test"]=="pplev") {
+
+        # determine name of the uploaded -utf8 text file
+        $paths = glob($work."/".$wbpn."/*-utf8.txt");
+        echo("source file: ".$paths[0]."<br/>");
+
+        # run the program here
+        $scommand = 'python3 pplev.py' .
+                     ' -i ' . $paths[0] .
+                     ' -o ' . $work."/".$wbpn."/pplev-result.txt";
+        $command = escapeshellcmd($scommand);
+        echo "command: ". $command . "<br/>";
+        $output = shell_exec($command);          
+        echo "result is ".$wbpn."/pplev-result.txt in your user folder";
+      } 
+
    };
 ?>
