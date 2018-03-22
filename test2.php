@@ -23,7 +23,7 @@ Tests without checkboxes are not available yet.
 information about the program, incluing usage instructions.<br/>
 When you have selected a file and a test to run, click Submit.</p>
 
-<form action="test_action3.php" method="POST" enctype="multipart/form-data">
+<form action="test_action2.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="txtfile" /><br/>
     <div style='margin-top:1em'>Then choose one of these available tests:</div>
     <table>
@@ -48,9 +48,9 @@ When you have selected a file and a test to run, click Submit.</p>
       <td>Zip file with HTML and images</td>
     </tr>   
     <tr>
-      <td></td>
-      <td>PPSpell</td>
-      <td>UTF-8 text</td>
+      <td><input type="radio" name="requested_test" value="ppsmq" /></td>
+      <td><a href='writeup-ppsmq.html' target="_blank">Ppsmq</a></td>
+      <td>UTF-8 text with "straight" quotes</td>
     </tr>  
   </table>
     <div style='margin-top:1em'>When ready, click Submit: <input type="submit" name="upload"/></div>

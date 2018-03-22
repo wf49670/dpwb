@@ -68,8 +68,9 @@ class Ppsmq(object):
                 self.wb[i] = re.sub("(<[^>]*?)\"(.*?>)", r"\1∯\2", self.wb[i])
 
     def doubleQuotes(self):
+        empty = re.compile("^$")
         dqlevel = 0
-        for i, _ in enumerate(self.wb):
+        for i, line in enumerate(self.wb):
 
             # expect dqlevel == 0 on an empty line unless next line starts with open quote
             if empty.match(line):
