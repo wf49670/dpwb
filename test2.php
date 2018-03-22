@@ -18,7 +18,8 @@ Drag and drop your text file on the "Choose File" button or click the button for
 dialog box.<br/>
 Once that file is ready, choose one
 test (for now) from the available checkboxes.<br/>
-Tests without checkboxes are not available yet. Click on the description to get more
+Tests without checkboxes are not available yet.
+<br/>Click on the description to get more
 information about the program, incluing usage instructions.<br/>
 When you have selected a file and a test to run, click Submit.</p>
 

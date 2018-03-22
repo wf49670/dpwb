@@ -1016,7 +1016,6 @@ class Ppgutc(object):
     def __str__(self):
         return "ppgutc"
 
-
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--infile', help='input file', required=True)
@@ -1030,12 +1029,10 @@ def parse_args():
     args = vars(parser.parse_args())
     return args
 
-
 def main():
     args = parse_args()
     ppgutc = Ppgutc(args)
     ppgutc.run()
-
 
 if __name__ == "__main__":
     sys.exit(main())
