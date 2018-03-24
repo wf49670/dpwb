@@ -95,6 +95,8 @@ class Ppspell(object):
 
         gb = wbuf.split("\n")
         gb = [s.rstrip() for s in gb]
+        for i,_ in enumerate(gb):
+            gb[i] = re.sub(r'\[oe\]','œ',gb[i])
         self.ddict = self.ddict.union(set(gb))
 
     # this splits the words and populates the wtext map
