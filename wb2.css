@@ -2,7 +2,7 @@ body,html {
   font-family: Georgia, Times New Roman, Times, serif;
 	margin:0;
 	padding:0;
-	background:#fff;
+	background:#ffffdd;
 	color:#000;
 }
 
@@ -12,8 +12,15 @@ body {
 
 h1 { font-weight: normal; font-size: 1.4em; }
 table { border-collapse: collapse; }
-table, th, td { border: 1px solid black; }
-td { padding-left: 1em; padding-right: 1em; }
+table, th, td { border: 1px solid gray; }
+td { 
+	padding-left: 0.5em;
+	padding-right: 1em;
+	background-color:white;
+	height:30px;
+	vertical-align:top
+}
+th { background-color: tan; }
 
 #header {
 	background:#fff;
@@ -55,7 +62,7 @@ td { padding-left: 1em; padding-right: 1em; }
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: Helvetica, Arial, sans-serif }
-h1 {font-size:110%;}
+h1 {font-size:120%;}
 h2 {font-size:90%;}
 h3 {font-size:90%;}
 h4 {font-size:90%;}
@@ -73,5 +80,3 @@ h6.rf { text-align: left; color: black; background-color: #99aabb; }
 .copyr { font-size:small; color: #808080; text-align:right; }
 
 .tt { font-family: monospace; font-size: 1em; }
-
-
