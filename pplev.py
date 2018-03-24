@@ -93,7 +93,7 @@ class Pplev(object):
                 words[i] = re.sub(r"^['‘’]+", "", words[i])
                 # remove closing quote
                 words[i] = re.sub(r"['’]+$", "", words[i])
-                # convert internal apostrophe
+                # dictionary uses straight quotes only
                 words[i] = re.sub(r"’", "'", words[i])
 
                 # if a word is capitalized, test to see if it's a proper name
