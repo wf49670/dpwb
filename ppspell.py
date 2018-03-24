@@ -42,6 +42,7 @@ class Ppspell(object):
             print("DEBUG: {}".format(msg))
 
     # load file from specified source file
+    # if necessary, convert internally to UTF-8
     def loadFile(self):
         try:
             wbuf = open(self.srcfile, "r", encoding='UTF-8').read()
@@ -52,6 +53,7 @@ class Ppspell(object):
             wbuf = open(self.srcfile, "r", encoding='Latin-1').read()
             self.encoding = "Latin-1"
             self.dprint("loaded Latin-1 file")
+            wbuf = wbuf.encode('utf8').decode('latin-1')
             self.wb = wbuf.split("\n")
         except:
             self.fatal(
@@ -59,11 +61,11 @@ class Ppspell(object):
         self.wb = [s.rstrip() for s in self.wb]
 
     # load dictionary
+    # disctionary is already UTF-8
     def loadDict(self):
         mdict = []
         try:
-            wbuf = open(self.root+'/'+self.wfile,
-                        "rU", encoding='UTF-8').read()
+            wbuf = open(self.wfile, "rU", encoding='UTF-8').read()
             mdict = wbuf.split("\n")
             self.dprint("loaded dictionary ({} words)".format(len(mdict)))
         except Exception as e:
@@ -73,6 +75,7 @@ class Ppspell(object):
         self.ddict = set(mdict)
 
     # load good-words from specified source file
+    # if necessary, convert internally to UTF-8
     def loadGood(self):
         gb = []
         gwloaded = False
@@ -80,38 +83,15 @@ class Ppspell(object):
             return
 
         try:
-            wbuf = open(self.goodfile, "r", encoding='ASCII').read()
-            if len(wbuf) == 0:
-                return  # we read it but it waw an empty file
-            else:
-                gwloaded = True
+            wbuf = open(self.goodfile, "r", encoding='UTF-8').read()
+            self.dprint("loaded UTF good_words.txt file")
+        except UnicodeDecodeError:
+            wbuf = open(self.goodfile, "r", encoding='Latin-1').read()
+            wbuf = wbuf.encode('utf8').decode('latin-1')
+            self.dprint("loaded Latin-1 good_words.txt file")
         except:
-            pass  # it wasn't ASCII
-
-        if not gwloaded:
-            try:
-                wbuf = open(self.goodfile, "r", encoding='UTF-8').read()
-                if len(wbuf) == 0:
-                    return
-                # we opened the goodwords file successfully as UTF-8. We need the
-                # file we are checking to be in UTF-8 also.
-                if self.encoding != "UTF-8":
-                    self.fatal(
-                        "encoding conflict: good-words (UTF-8) and text (Latin-1)")
-            except UnicodeDecodeError:
-                # okay, the good words file isn't UTF-8. See if it's Latin-1
-                wbuf = open(self.goodfile, "r", encoding='Latin-1').read()
-                if len(wbuf) == 0:
-                    return
-                # good words file is Latin-1. The text file needs to be the
-                # same.
-                if self.encoding != "Latin-1":
-                    self.fatal(
-                        "encoding conflict: good-words (Latin-1) and text (UTF-8)")
-                self.dprint("loaded Latin-1 file")
-            except:
-                self.fatal(
-                    "loadFile: cannot open goodwords file {}".format(self.goodfile))
+            self.fatal(
+                "loadFile: cannot open goodwords file {}".format(self.goodfile))
 
         gb = wbuf.split("\n")
         gb = [s.rstrip() for s in gb]
@@ -127,14 +107,15 @@ class Ppspell(object):
             s = re.sub(r"=", ' ', s)  # bold marker
             s = re.sub(r"\[", ' ', s)  # brackets are word delimiters
             s = re.sub(r"]", ' ', s)  # bracket
+            s = re.sub(r"’", "'", s)  # straighten
+
             words = s.split(' ')
-            for i, s in enumerate(words):
+            for i, _ in enumerate(words):
                 words[i] = re.sub(r"[,.\"“”:;?)(!]", "", words[i])
-                words[i] = re.sub(r"--", "", words[i])  # Latin-1
-                words[i] = re.sub(r"—", "", words[i])  # UTF-8
+                # note: cannot distinguish between single quote and apostrophe
+                # in cases such as "'tain't"
                 words[i] = re.sub(r"^['‘]", "", words[i])  # opening quote
                 words[i] = re.sub(r"['’]$", "", words[i])  # closing quote
-                words[i] = re.sub(r"’", "'", words[i])  # internal apostrophe
             for word in words:
                 if word not in self.wtext:
                     self.wtext[word] = str(n)
@@ -149,9 +130,9 @@ class Ppspell(object):
     def sQuotes(self):
         for i, _ in enumerate(self.wb):
             self.wb[i] = re.sub("’", "'", self.wb[i])
+        self.dprint("candidates: {} words".format(len(self.wtext)))
 
     def okByFreq(self):
-        self.dprint("candidates: {} words".format(len(self.wtext)))
         t = []
         u = []
         for word in self.wtext:  # get all the words in the text
@@ -249,7 +230,8 @@ class Ppspell(object):
         else:
             fn = self.outfile
         f1 = open(fn, "w", encoding=self.encoding)
-        f1.write('\ufeff')  # BOM mark
+        if self.encoding == "UTF-8":
+            f1.write('\ufeff')  # BOM mark
 
         # if a word remains in wtext, it has not been approved
         for key in self.wtext:
@@ -276,7 +258,6 @@ class Ppspell(object):
     # util: save specified list to specified dstfile
     def saveFile(self, a, fn):
         f1 = open(fn, "w", encoding=self.encoding)
-        f1.write("DING")
         for t in a:
             f1.write("{:s}\n".format(t))
         f1.close()
