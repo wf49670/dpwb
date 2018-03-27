@@ -288,7 +288,7 @@ def parse_args():
     parser.add_argument('-i', '--infile', help='input file', required=True)
     parser.add_argument('-o', '--outfile', help='output file', required=True)
     parser.add_argument('-g', '--goodfile', help='good word list', default="")
-    parser.add_argument('-w', '--wfile', help='dictionary wordlist', default="master.en")
+    parser.add_argument('-w', '--wfile', help='dictionary wordlist', default="master.en_us")
     parser.add_argument(
         '-d', '--debug', help='debug (developer only)', action='store_true')
     args = vars(parser.parse_args())
