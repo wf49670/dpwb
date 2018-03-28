@@ -156,7 +156,18 @@
         $command = escapeshellcmd($scommand);
         # echo "command: ". $command . "<br/>";
         $output = shell_exec($command);
-      }         
+      }  
+
+      if ($_POST["requested_test"]=="pptxt") {
+
+        # run the program here
+        $scommand = 'python3 pptxt.py' .
+                     ' -i ' . $user_textfile .
+                     ' -o ' . $work."/".$wbpn."/result.txt";
+        $command = escapeshellcmd($scommand);
+        # echo "command: ". $command . "<br/>";
+        $output = shell_exec($command);
+      }             
 
       echo "<!doctype html>";
       echo "<html lang=\"en\">";

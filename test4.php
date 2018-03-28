@@ -55,7 +55,12 @@ When you have selected a file and a test to run, click Submit.</p>
       <td><input type="radio" name="requested_test" value="ppjeeb" /></td>
       <td><a href='writeup-ppjeeb.html' target="_blank">Ppjeeb</a></td>
       <td>text file</td>
-    </tr>        
+    </tr>
+    <tr>
+      <td><input type="radio" name="requested_test" value="pptxt" /></td>
+      <td><a href='writeup-pptxt.html' target="_blank">Pptxt</a></td>
+      <td>text file</td>
+    </tr>       
   </table>
     <div style='margin-top:1em'>When ready, click Submit: <input type="submit" name="upload"/></div>
 </form>
