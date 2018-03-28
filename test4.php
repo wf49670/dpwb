@@ -9,7 +9,7 @@
 
   <body>
 
-<h1 class='rf'>DP Workbench Test Page <span style='font-size:small;'>(version 2018.03.23)</span></h1>
+<h1 class='rf'>DP Workbench Test Page <span style='font-size:small;'>(version 2018.03.28)</span></h1>
 
 <p>This is a test page for the DP Workbench.<br/>Here the file is uploaded, scanned for viruses, and then dispatched to an available test.</p>
 
