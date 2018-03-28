@@ -54,8 +54,9 @@ class Ppsmq(object):
         empty = re.compile("^$")
         while empty.match(self.wb[-1]):
             del self.wb[-1]
-        f1 = open(fn, "w", encoding="UTF-8")
-        f1.write('\ufeff')  # BOM mark
+        f1 = open(fn, "w", encoding=self.encoding)
+        if self.encoding == "UTF-8":
+            f1.write('\ufeff')  # BOM if UTF-8
         for index, t in enumerate(self.wb):
             f1.write("{:s}\r\n".format(t))
         f1.close()

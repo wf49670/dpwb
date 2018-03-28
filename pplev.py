@@ -200,7 +200,8 @@ class Pplev(object):
     #
     def saveReport(self):
         f1 = open(self.outfile, "w", encoding=self.encoding)
-        f1.write('\ufeff')  # we want a BOM on the text file 2018.03.22
+        if self.encoding == "UTF-8":
+            f1.write('\ufeff')  # we want a BOM on the text file 2018.03.22
         f1.write("pplev report\n")
         f1.write("-"*80+"\n")
         for r in self.report:
