@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jeebies.py for DP Post-processor's Workbench
+ppjeeb.py for DP Post-processor's Workbench
 license: MIT
 version: 2018.03.28
 """
@@ -11,6 +11,7 @@ import sys
 import re
 from time import gmtime, strftime
 import argparse
+import os
 
 # jeebies in Python.
 # gives similar results to C version.
@@ -61,8 +62,9 @@ class Ppjeeb(object):
                 "loadFile: cannot open source file {}".format(self.srcfile))
         self.wb = [s.rstrip() for s in self.wb]
 
+        SCRIPT_ROOT = os.path.dirname(os.path.realpath(__file__))
         # load the he.jee file
-        w = open("he.jee", "rU", encoding='UTF-8').read()
+        w = open(SCRIPT_ROOT+"/he.jee", "rU", encoding='UTF-8').read()
         t = w.split("\n")
         for s in t:
             u = s.split()
@@ -71,7 +73,7 @@ class Ppjeeb(object):
                 self.hen.append(u[1].strip())
 
         # load the be.jee file
-        w = open("be.jee", "rU", encoding='UTF-8').read()
+        w = open(SCRIPT_ROOT+"/be.jee", "rU", encoding='UTF-8').read()
         t = w.split("\n")
         for s in t:
             u = s.split()
