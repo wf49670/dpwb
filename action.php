@@ -169,6 +169,17 @@
         $output = shell_exec($command);
       }             
 
+      if ($_POST["requested_test"]=="ppppv") {
+
+        # run the program here
+        $scommand = 'python3 ppppv.py' .
+                     ' -i ' . $user_htmlfile .
+                     ' -o ' . $work."/".$wbpn."/result.txt";
+        $command = escapeshellcmd($scommand);
+        # echo "command: ". $command . "<br/>";
+        $output = shell_exec($command);
+      } 
+
       echo "<!doctype html>";
       echo "<html lang=\"en\">";
       echo "<head>";
