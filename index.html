@@ -27,7 +27,7 @@
 
 <form action="action.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="userfile" /><br/>
-    <div style='margin-top:1em'>Then select one of these available tests:</div>
+    <div style='margin-top:1em; margin-bottom:0.5em;'>Then select one of these available tests:</div>
     <table>
     <tr>
       <th>Select</th>
@@ -82,6 +82,16 @@
         output: results file sorted by test.
       </td>
     </tr>
+    <tr>
+      <td>
+        <!-- <input type="radio" name="requested_test" value="ppppv" /> -->
+      </td>
+      <td><a href='writeup-ppppv.html' target="_blank">Ppppv</a></a><br/>checks for PPV</td>
+      <td>
+        input: zip file with text, HTML and images folder<br/>
+        output: results file.
+      </td>
+    </tr>    
   </table>
     <div style='margin-top:1em; margin-bottom:2em;'><input type="submit" name="upload"/></div>
 </form>
