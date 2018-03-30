@@ -186,7 +186,7 @@
       echo "  <link rel='stylesheet' type='text/css' href='workbench.css'>";
       echo "</head>";
       echo "<body>";
-      echo "<p><b>DP Workbench Results</b></p>";
+      echo "<p><b>Post-Processing Workbench Results</b></p>";
 
       if (file_exists("${work}/${wbpn}/result.txt")){
        echo "<p>results available: <a href='${work}/${wbpn}/result.txt'>here</a>.<br/>

@@ -4,7 +4,6 @@
 """
 ppgutc.py for DP Post-processor's Workbench
 license: MIT
-version: 2018.03.21
 """
 
 import re
@@ -31,7 +30,7 @@ class Ppgutc(object):
         self.report = ""  # the generated report
         self.text = ""  # the entire book in one string
         self.NOW = strftime("%Y-%m-%d %H:%M:%S", gmtime())+" GMT"
-        self.VERSION = "2018.03.21"
+        self.VERSION = "2018.03.30"
         # definitions matching those in gutcheck.c
         self.LONGEST_PG_LINE = 75
         self.WAY_TOO_LONG = 80
@@ -226,7 +225,7 @@ class Ppgutc(object):
 
     # display (fatal) error and exit
     def fatal(self, message):
-        sys.stderr.write("fatal: " + message + "\n")
+        sys.stderr.write("fatal: " + message + "\r\n")
         exit(1)
 
     def check_commas(self, tn, td):
@@ -260,7 +259,7 @@ class Ppgutc(object):
             if usem:
                 if not reported:
                     reported = True
-                    s += "specific comma checks\n"
+                    s += "specific comma checks\r\n"
                 if not self.showall and count == 5:
                     s += "          ..... more"
                     count += 1
@@ -273,7 +272,7 @@ class Ppgutc(object):
                     if rlim != len(self.wb[i]):
                         rlim = t.rfind(" ")
                     t = t[llim:rlim].strip()
-                    s += "{:6d} {:s}\n".format(i, t)
+                    s += "{:6d} {:s}\r\n".format(i, t)
                     count += 1
 
         if self.showall and not reported:
@@ -297,7 +296,7 @@ class Ppgutc(object):
             for hit in hits:
                 if not reported:
                     reported = True
-                    s += "unexpected comma after word\n"
+                    s += "unexpected comma after word\r\n"
                 if not self.showall and count == 5:
                     s += "          ..... more"
                     count += 1
@@ -323,7 +322,7 @@ class Ppgutc(object):
             for hit in hits:
                 if not reported:
                     reported = True
-                    s += "unexpected period after word\n"
+                    s += "unexpected period after word\r\n"
                 if not self.showall and count == 5:
                     s += "          ..... more"
                     count += 1
@@ -349,7 +348,7 @@ class Ppgutc(object):
             for hit in hits:
                 if not reported:
                     reported = True
-                    s += "unexpected two letter combination ending word\n"
+                    s += "unexpected two letter combination ending word\r\n"
                 if not self.showall and count == 5:
                     s += "          ..... more"
                     count += 1
@@ -430,12 +429,12 @@ class Ppgutc(object):
                 if not okend:
                     if not reported:
                         reported = True
-                        s += "{}\n".format(td)
+                        s += "{}\r\n".format(td)
                     if not self.showall and count == 20:
                         s += "          ..... more"
                         count += 1
                     if self.showall or count < 5:
-                        s += "{:6d} {:s}\n".format(i, self.wb[i])
+                        s += "{:6d} {:s}\r\n".format(i, self.wb[i])
                         count += 1
             i += 1
         if self.showall and not reported:
@@ -456,7 +455,7 @@ class Ppgutc(object):
             for hit in hits:
                 if not reported:
                     reported = True
-                    s += "unexpected two letter combination starting word\n"
+                    s += "unexpected two letter combination starting word\r\n"
                 if not self.showall and count == 5:
                     s += "          ..... more"
                     count += 1
@@ -482,14 +481,14 @@ class Ppgutc(object):
             for i, line in enumerate(self.wb):
                 if re.search(r"\b{}\b".format(hb), line):
                     if not reported:
-                        s += "Common he/be suspects (please run jeebies)\n\n"
+                        s += "Common he/be suspects (please run jeebies)\r\n\r\n"
                         reported = True
                     if not self.showall and count == 5:
                         s += "       ..... more"
                         count += 1
                     if self.showall or count < 5:
                         line = re.sub("({})".format(hb), r"<\1>", line)
-                        s += "{:>6} {}\n".format(i, line)
+                        s += "{:>6} {}\r\n".format(i, line)
                         count += 1
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -509,14 +508,14 @@ class Ppgutc(object):
             for i, line in enumerate(self.wb):
                 if re.search(r"\b{}\b".format(hb), line):
                     if not reported:
-                        s += "Common had/bad suspects\n\n"
+                        s += "Common had/bad suspects\r\n\r\n"
                         reported = True
                     if not self.showall and count == 5:
                         s += "       ..... more"
                         count += 1
                     if self.showall or count < 5:
                         line = re.sub("({})".format(hb), r"<\1>", line)
-                        s += "{:>6} {}\n".format(i, line)
+                        s += "{:>6} {}\r\n".format(i, line)
                         count += 1
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -535,14 +534,14 @@ class Ppgutc(object):
             for i, line in enumerate(self.wb):
                 if re.search(r"\b{}\b".format(hb), line):
                     if not reported:
-                        s += "Common hut/but suspects\n\n"
+                        s += "Common hut/but suspects\r\n\r\n"
                         reported = True
                     if not self.showall and count == 5:
                         s += "       ..... more"
                         count += 1
                     if self.showall or count < 5:
                         line = re.sub("({})".format(hb), r"<\1>", line)
-                        s += "{:>6} {}\n".format(i, line)
+                        s += "{:>6} {}\r\n".format(i, line)
                         count += 1
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -558,34 +557,34 @@ class Ppgutc(object):
         for key in d.keys():
             if d[key] == 1:
                 if not reported:
-                    s += "Letter frequency checks\n\n"
+                    s += "Letter frequency checks\r\n\r\n"
                     reported = True
                 if not report1:
-                    s += "  singletons:\n"
+                    s += "  singletons:\r\n"
                     report1 = True
                 for i, line in enumerate(self.wb):
                     where = line.find(key)
                     if where != -1:
-                        s += "{:>6} {:6} {}\n".format(key, i, line)
+                        s += "{:>6} {:6} {}\r\n".format(key, i, line)
         for key in d.keys():
             if d[key] == 2:
                 if not reported:
-                    s += "Letter frequency checks\n\n"
+                    s += "Letter frequency checks\r\n\r\n"
                     reported = True
                 if not report2:
-                    s += "  doubletons:\n"
+                    s += "  doubletons:\r\n"
                     report2 = True
                 for i, line in enumerate(self.wb):
                     where = line.find(key)
                     if where != -1:
-                        s += "{:>6} {:6} {}\n".format(key, i, line)
+                        s += "{:>6} {:6} {}\r\n".format(key, i, line)
         for key in d.keys():
             if d[key] > 2 and d[key] < 10:
                 if not reported:
-                    s += "Letter frequency checks\n\n"
+                    s += "Letter frequency checks\r\n\r\n"
                     reported = True
                 if not report3:
-                    s += "  characters with three to ten occurrences:\n"
+                    s += "  characters with three to ten occurrences:\r\n"
                     report3 = True
                     s += "     "
                 s += "{} ".format(key)
@@ -600,13 +599,13 @@ class Ppgutc(object):
             tmp = line.lstrip()  # ignore leading spaces
             if "  " in tmp:
                 if not reported:
-                    s += "Adjacent spaces check\n\n"
+                    s += "Adjacent spaces check\r\n\r\n"
                     reported = True
                 if not self.showall and count == 5:
                     s += "       ..... more"
                     count += 1
                 if self.showall or count < 5:
-                    s += "{:>6} {}\n".format(i+1, line)
+                    s += "{:>6} {}\r\n".format(i+1, line)
                     count += 1
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -623,13 +622,13 @@ class Ppgutc(object):
                     continue
             if "*" in line:
                 if not reported:
-                    s += "Asterisk check\n\n"
+                    s += "Asterisk check\r\n\r\n"
                     reported = True
                 if not self.showall and count == 5:
                     s += "       ..... more"
                     count += 1
                 if self.showall or count < 5:
-                    s += "{:>6} {}\n".format(i+1, line)
+                    s += "{:>6} {}\r\n".format(i+1, line)
                     count += 1
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -648,14 +647,14 @@ class Ppgutc(object):
         has_Am = (c1 != None or c3 != None or c5 != None)
         has_Br = (c2 != None or c4 != None or c6 != None)
         if has_Am and has_Br:
-            s = "both American and British abbreviations conventions found\n"
+            s = "both American and British abbreviations conventions found\r\n"
         if s != "":
-            nmrp = self.text.count(r"Mr\.")
-            nmr = self.text.count(r"Mr") - nmrp  # account for double counting
-            nmrsp = self.text.count(r"Mrs\.")
-            nmrs = self.text.count(r"Mrs") - nmrsp
-            ndrp = self.text.count(r"Dr\.")
-            ndr = self.text.count(r"Dr") - ndrp
+            nmrp = len(re.findall(r"Mr\.",self.text))
+            nmr = len(re.findall(r"Mr[^\.]", self.text))
+            nmrsp = len(re.findall(r"Mrs\.",self.text))
+            nmrs = len(re.findall(r"Mrs[^\.]", self.text))            
+            ndrp = len(re.findall(r"Dr\.",self.text))
+            ndr = len(re.findall(r"Dr[^\.]", self.text))            
             s += "  Count of occurrences: Mr={} Mr.={} Mrs={} Mrs.={} Dr={} Dr.={}".format(
                 nmr, nmrp, nmrs, nmrsp, ndr, ndrp)
 
@@ -666,7 +665,7 @@ class Ppgutc(object):
     # always a limited representative display.
     def check_today(self, *_):
         s = ""
-        s += "Today/To-day checks\n"
+        s += "Today/To-day checks\r\n"
         ntoday = nto_day = ntomorrow = nto_morrow = 0
         c1 = re.search(r"\bto-day", self.text, flags=re.IGNORECASE)
         c2 = re.search(r"\bto-morrow", self.text, flags=re.IGNORECASE)
@@ -677,28 +676,28 @@ class Ppgutc(object):
 
         if mixed_today:
             reported_today = reported_to_day = False
-            s += "  Mixed \"today\" and \"to-day\" found in text.\n"
+            s += "  Mixed \"today\" and \"to-day\" found in text.\r\n"
             for line in self.wb:
                 if not reported_today and re.search("today", line, flags=re.IGNORECASE):
-                    s += "    {}\n".format(line)
+                    s += "    {}\r\n".format(line)
                     reported_today = True
                 if not reported_to_day and re.search("to-day", line, flags=re.IGNORECASE):
-                    s += "    {}\n".format(line)
+                    s += "    {}\r\n".format(line)
                     reported_to_day = True
 
         if mixed_tomorrow:
             reported_tomorrow = reported_to_morrow = False
-            s += "  Mixed \"tomorrow\" and \"to-morrow\" found in text.\n"
+            s += "  Mixed \"tomorrow\" and \"to-morrow\" found in text.\r\n"
             for line in self.wb:
                 if not reported_tomorrow and re.search("tomorrow", line, flags=re.IGNORECASE):
-                    s += "    {}\n".format(line)
+                    s += "    {}\r\n".format(line)
                     reported_today = True
                 if not reported_to_morrow and re.search("to-morrow", line, flags=re.IGNORECASE):
-                    s += "    {}\n".format(line)
+                    s += "    {}\r\n".format(line)
                     reported_to_morrow = True
 
         if not mixed_tomorrow and not mixed_today:
-            s += "     no errors found.\n"
+            s += "     no errors found.\r\n"
         ntoday = self.text.count("today")
         ntoday += self.text.count("Today")
         nto_day = self.text.count("to-day")
@@ -726,7 +725,7 @@ class Ppgutc(object):
                 break
 
         if self.showall and not (has_tc and has_ap):
-            self.areport("\ntest {}: {} [no reports]".format(tn, td))
+            self.areport("\r\ntest {}: {} [no reports]".format(tn, td))
 
         if has_tc and has_ap:
             s = "both turned comma and apostrophe name contractions found."
@@ -765,13 +764,13 @@ class Ppgutc(object):
                 continue  # no checks on centered lines
             if len(self.wb[i]) < self.SHORTEST_PG_LINE and len(self.wb[i+1]) > 0:
                 if not reported:
-                    stmp += "Short lines check\n\n"
+                    stmp += "Short lines check\r\n\r\n"
                     reported = True
                 if not self.showall and count == 5:
                     stmp += "       ..... more"
                 if self.showall or count < 5:
-                    stmp += "{:>6} {}\n".format(i+1, line)
-                    stmp += "       {}\n".format(self.wb[i+1])
+                    stmp += "{:>6} {}\r\n".format(i+1, line)
+                    stmp += "       {}\r\n".format(self.wb[i+1])
                 count += 1
 
         if self.showall and not reported:
@@ -780,7 +779,7 @@ class Ppgutc(object):
         # if there were a lot, put a short message
         # else report the short lines
         if count > 20:
-            s += "Short lines check\n\n"
+            s += "Short lines check\r\n\r\n"
             s += "      more that 20 short lines detected ({}). Not reporting them.".format(
                 count)
         else:
@@ -800,17 +799,17 @@ class Ppgutc(object):
                 very_long_count += 1
             if len(self.wb[i]) > self.LONGEST_PG_LINE:
                 if not reported:
-                    s += "Long lines check\n\n"
+                    s += "Long lines check\r\n\r\n"
                     reported = True
                 if not self.showall and count == 5:
                     s += "       ..... more"
                     count += 1
                 if self.showall or count < 5:
-                    s += "{:>6} ({}) {}\n".format(i+1, len(line), line)
-                    s += "       {}\n".format(self.wb[i+1])
+                    s += "{:>6} ({}) {}\r\n".format(i+1, len(line), line)
+                    s += "       {}\r\n".format(self.wb[i+1])
                     count += 1
         if very_long_count > 0:
-            s += "       {} lines are very long\n".format(very_long_count)
+            s += "       {} lines are very long\r\n".format(very_long_count)
 
         if self.showall and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
@@ -832,11 +831,11 @@ class Ppgutc(object):
             for hit in hits:
                 if not reported:
                     reported = True
-                    s += "Common scannos check:\n"
+                    s += "Common scannos check:\r\n"
                 if report_count < 5:
                     if not word_reported:
                         word_reported = True
-                        s += "  " + t1 + "\n"  # the word
+                        s += "  " + t1 + "\r\n"  # the word
                     # s += "  " + self.add_report_s(hit.span(), "3,3", t1) old
                     s += "  " + self.add_report_s(hit.span(), "3,3")
                     if not self.showall:
@@ -845,7 +844,7 @@ class Ppgutc(object):
                 if report_count >= 5:
                     report_count += 1
             if report_count > 5:
-                s += "          ..... ({} more)\n".format(report_count - 5)
+                s += "          ..... ({} more)\r\n".format(report_count - 5)
         return s
 
     ####################################################################
@@ -854,7 +853,6 @@ class Ppgutc(object):
 
     # load file from specified source file into working buffer
     # accepts UTF-8 with or without BOM, Latin-1 or plain ASCII
-    # on input, even if cr/lf found it is converted to \n
     def loadFile(self, fn):
 
         # try UTF-8
@@ -895,15 +893,13 @@ class Ppgutc(object):
         if self.debug:
             print("save filename: {}".format(fn))
         f1 = open(fn, "w", encoding=self.encoding)
-        # if using cr/lf
-        # buffer = re.sub(r"\n", r"\r\n", buffer)
         if self.encoding == "UTF-8":
             f1.write('\ufeff')  # BOM if UTF-8
-        f1.write("generated by ppgutc (version {})\n".format(self.VERSION))
+        f1.write("generated by ppgutc (version {})\r\n".format(self.VERSION))
         # f1.write("source file: {}".format(options.infile.split('/')[-1]))
-        f1.write("run completed: {}\n".format(self.NOW))
-        f1.write("note: ⤶ represents a line break\n")
-        f1.write("\n")
+        f1.write("run completed: {}\r\n".format(self.NOW))
+        f1.write("note: ⤶ represents a line break\r\n")
+        f1.write("\r\n")
         f1.write(buffer)
         f1.close()
 
@@ -912,7 +908,7 @@ class Ppgutc(object):
     ####################################################################
 
     def areport(self, s):
-        self.report += s.rstrip() + "\n"
+        self.report += s.rstrip() + "\r\n"
 
     # return s a string
     def add_report_s(self, thespan, how):
@@ -934,7 +930,7 @@ class Ppgutc(object):
             s = (s[:75] + ' ...') if len(s) > 75 else s
             # if self.highlight and word != "":
             #    s = re.sub(word, '\033[31;49m{}\033[m'.format(word), s)
-            result = "{:6d}  {}\n".format(theline, s)
+            result = "{:6d}  {}\r\n".format(theline, s)
             return result
 
     # adds report directly
@@ -980,7 +976,7 @@ class Ppgutc(object):
             if self.debug:
                 print(t3[0], t3[3])
             if str(t3[0]) in self.skiptests:
-                self.areport("\ntest {} skipped: {}".format(t3[0], t3[3]))
+                self.areport("\r\ntest {} skipped: {}".format(t3[0], t3[3]))
                 continue
             # 'r' means run a regular expression
             if t3[1] == "r":
@@ -991,7 +987,7 @@ class Ppgutc(object):
                     for hit in hits:
                         if not reported:
                             reported = True
-                            self.areport("\ntest {}: {}".format(t3[0], t3[3]))
+                            self.areport("\r\ntest {}: {}".format(t3[0], t3[3]))
                         if not self.showall and count == 5:
                             self.areport("        ..... more")
                             count += 1
@@ -1007,7 +1003,7 @@ class Ppgutc(object):
                 method_to_call = getattr(self, method_name)
                 result = method_to_call(t3[0], t3[3])
                 if len(result) > 0:
-                    self.areport("\ntest {}: {}".format(t3[0], result))
+                    self.areport("\r\ntest {}: {}".format(t3[0], result))
 
         self.saveFile(self.report, self.outfile)
 

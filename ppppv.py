@@ -4,7 +4,6 @@
 """
 ppppv.py for Post-Processing Workbench
 license: MIT
-version: 2018.03.30
 """
 
 import re

@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-pptxt.py for DP Post-processor's Workbench
+pptxt.py for Post-Processing Workbench
 license: MIT
-version: 2018.03.28
 """
 
 import sys
@@ -23,11 +22,11 @@ class Pptxt(object):
         self.wb = []  # working (wrapped) text
         self.wb2 = []  # unwrapped text
         self.encoding = ""
-        self.VERSION = "2018.03.28"
+        self.VERSION = "2018.03.30"
 
     # display (fatal) error and exit
     def fatal(self, message):
-        sys.stderr.write("fatal: " + message + "\n")
+        sys.stderr.write("fatal: " + message + "\r\n")
         exit(1)
 
     # appends to report
@@ -518,12 +517,12 @@ class Pptxt(object):
 
     # save report with same encoding as source file
     def saveReport(self):
-        self.t.append("end of report (pptxt {})\n".format(self.VERSION))
+        self.t.append("end of report (pptxt {})\r\n".format(self.VERSION))
         f1 = open(self.outfile, "w", encoding=self.encoding)
         if self.encoding == "UTF-8":
             f1.write('\ufeff')  # BOM if UTF-8
         for w in self.t:
-            f1.write("{:s}\n".format(w))
+            f1.write("{:s}\r\n".format(w))
         f1.close()
 
     def run(self):
