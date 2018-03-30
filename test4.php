@@ -9,7 +9,7 @@
 
   <body>
 
-<h1 class='rf'>DP Workbench Test Page <span style='font-size:small;'>(version 2018.03.28)</span></h1>
+<h1 class='rf'>DP Workbench Test Page <span style='font-size:small;'>(version 2018.03.30)</span></h1>
 
 <p>This is a test page for the DP Workbench.<br/>Here the file is uploaded, scanned for viruses, and then dispatched to an available test.</p>
 
@@ -17,7 +17,7 @@
 Drag and drop your file on the "Choose File" button or click the button for a dialog box.<br/>
 Once that file is ready, choose one test (for now) from the available checkboxes.<br/>
 Any test without a checkbox is not available yet.<br/>
-Click on the description to get more information about the program.<br/>
+Click on the program name to get more information about the program.<br/>
 When you have selected a file and a test to run, click Submit.</p>
 
 <form action="test_action4.php" method="POST" enctype="multipart/form-data">
@@ -28,10 +28,10 @@ When you have selected a file and a test to run, click Submit.</p>
       <th>Select</th>
       <th>Description</th>
       <th>Usage</th>
-    </tr>      
+    </tr>
     <tr>
       <td><input type="radio" name="requested_test" value="ppgutc" checked="checked"/></td>
-      <td><a href='writeup-gutcheck.html' target="_blank">Ppgutc</a><br/>gutcheck-type tests</td>
+      <td><a href='writeup-ppgutc.html' target="_blank">Ppgutc</a><br/>gutcheck-type tests</td>
       <td>
         input: text file<br/>
         output: report file listed by test number
@@ -52,7 +52,7 @@ When you have selected a file and a test to run, click Submit.</p>
         input: text file or Zip file of text file+good_words.txt<br/>
         output: suspect words with frequencey and context
       </td>
-    </tr>   
+    </tr>
     <tr>
       <td><input type="radio" name="requested_test" value="ppsmq" /></td>
       <td><a href='writeup-ppsmq.html' target="_blank">Ppsmq</a></a><br/>Smart quote text reformatter</td>
@@ -76,7 +76,7 @@ When you have selected a file and a test to run, click Submit.</p>
         input: text file<br/>
         output: results file sorted by test.
       </td>
-    </tr>       
+    </tr>
   </table>
     <div style='margin-top:1em'>When ready, click Submit: <input type="submit" name="upload"/></div>
 </form>
@@ -86,4 +86,3 @@ When you have selected a file and a test to run, click Submit.</p>
 
   </body>
 </html>
-
