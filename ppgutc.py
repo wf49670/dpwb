@@ -650,12 +650,12 @@ class Ppgutc(object):
         if has_Am and has_Br:
             s = "both American and British abbreviations conventions found\n"
         if s != "":
-            nmrp = self.text.count("Mr.")
-            nmr = self.text.count("Mr") - nmrp  # account for double counting
-            nmrsp = self.text.count("Mrs.")
-            nmrs = self.text.count("Mrs") - nmrsp
-            ndrp = self.text.count("Dr.")
-            ndr = self.text.count("Dr") - ndrp
+            nmrp = self.text.count(r"Mr\.")
+            nmr = self.text.count(r"Mr") - nmrp  # account for double counting
+            nmrsp = self.text.count(r"Mrs\.")
+            nmrs = self.text.count(r"Mrs") - nmrsp
+            ndrp = self.text.count(r"Dr\.")
+            ndr = self.text.count(r"Dr") - ndrp
             s += "  Count of occurrences: Mr={} Mr.={} Mrs={} Mrs.={} Dr={} Dr.={}".format(
                 nmr, nmrp, nmrs, nmrsp, ndr, ndrp)
 

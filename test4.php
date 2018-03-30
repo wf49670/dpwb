@@ -3,22 +3,27 @@
   <head>
 	  <meta charset="utf-8">
 	  <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>DP Workbench</title>
+    <title>Post-Processing Workbench</title>
     <link rel="stylesheet" type="text/css" href="dpwb.css">
   </head>
 
   <body>
 
-<h1 class='rf'>DP Workbench Test Page <span style='font-size:small;'>(version 2018.03.30)</span></h1>
+<h1 class='rf'>Post-Processing Workbench Test Page <span style='font-size:small;'>(version 2018.03.30)</span></h1>
 
-<p>This is a test page for the DP Workbench.<br/>Here the file is uploaded, scanned for viruses, and then dispatched to an available test.</p>
+<p>This is a test page for the Post-Processing Workbench.</p>
 
-<p>For these tests you may upload a text file or a zip file.<br/>
-Drag and drop your file on the "Choose File" button or click the button for a dialog box.<br/>
-Once that file is ready, choose one test (for now) from the available checkboxes.<br/>
-Any test without a checkbox is not available yet.<br/>
-Click on the program name to get more information about the program.<br/>
-When you have selected a file and a test to run, click Submit.</p>
+<p>Here you may upload a text or .zip file and select, one by one, the tests you would like it to undergo.</p>
+
+<p>Instructions:</p>
+
+<ol>
+<li>Drag and drop your text or .zip file onto the "Choose File" or "Browse" button or click the button to select your file via a dialogue box. Zip files should contain only the HTML/text/image etc. files prepared as you would to submit to PPV or to Project Gutenberg.</li>
+<li>Once your file has been uploaded it's name will appear beside the button.</li>
+<li>Select a test from the list and press the "Submit" button.</li>
+<li>Once the test is completed (it can take a minute or more to complete), you may view or download the test results.</li>
+<li>To return to the test selection screen, simply use your "Back" button. You can then select and run another test.</li>
+</ol>
 
 <form action="test_action4.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="userfile" /><br/>
@@ -78,11 +83,17 @@ When you have selected a file and a test to run, click Submit.</p>
       </td>
     </tr>
   </table>
-    <div style='margin-top:1em'>When ready, click Submit: <input type="submit" name="upload"/></div>
+    <div style='margin-top:1em; margin-bottom:2em;'><input type="submit" name="upload"/></div>
 </form>
 
-<p>It can take up to a minute for results to appear on the next page.<br/>Once they do, you may either
-  view or download the results.</p>
+<p>Please remember to also run these tests:</p>
+
+<ul>
+      <li><a href='http://epubmaker.pglaf.org/'>Gutenberg online epubmaker</a></li>
+    <li><a href="http://validator.w3.org/">W3C HTML markup validator</a></li>
+    <li><a href="http://jigsaw.w3.org/css-validator/">W3C CSS validator</a></li>
+    <li><a href="http://validator.w3.org/checklink">W3C Link Checker</a></li>
+  </ul>
 
   </body>
 </html>
