@@ -81,7 +81,7 @@
       }
       if ($file_ext=="zip") {
         foreach (glob($work."/".$wbpn."/*.txt") as $filename) {
-            if (basename($filename)=="good_words.txt"){
+            if (basename($filename)=="goodwords.txt"){
                 $user_wordfile=$filename;
             } else {
                 $user_textfile=$filename;
