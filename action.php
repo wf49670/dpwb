@@ -1,5 +1,19 @@
 <?php
 
+   function getUserIP() {
+       if( array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ) {
+           if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')>0) {
+               $addr = explode(",",$_SERVER['HTTP_X_FORWARDED_FOR']);
+               return trim($addr[0]);
+           } else {
+               return $_SERVER['HTTP_X_FORWARDED_FOR'];
+           }
+       }
+       else {
+           return $_SERVER['REMOTE_ADDR'];
+       }
+   }
+
    if(isset($_FILES['userfile'])){
       $errors= array();                 # place to save error messages
       $work="t";                        # have a working folder for the Workbench
@@ -12,6 +26,10 @@
       $file_tmp=$_FILES['userfile']['tmp_name'];
       $file_type=$_FILES['userfile']['type'];
       $file_ext=pathinfo($file_name, PATHINFO_EXTENSION);
+
+      # get information about the user/run
+      $date = date('Y-m-d H:i:s');
+      $ipaddress = getUserIP();
 
       # validate what the user sent us
       # was a file specified?
@@ -34,6 +52,8 @@
       exec($cmd, $av_test_result, $av_retval);
       if ($av_retval != 0) {
         echo "virus scan failed. exiting";
+        $s = $date." ".$_POST['requested_test']." VIRUS CHECK FAIL ".$ipaddress."\n";
+        file_put_contents($work."/access.log", $s, FILE_APPEND);
         exit(1);
       }
 
@@ -42,6 +62,9 @@
 
         # create a separate folder for each workbench project
         mkdir($work."/".$wbpn, 0755);
+
+        $s = $date." ".$_POST['requested_test']." ".$ipaddress."\n";
+        file_put_contents($work."/access.log", $s, FILE_APPEND);
 
         # if a zip file was uploaded, burst it in the project folder
         if ($file_ext=="zip") {
@@ -113,8 +136,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }
 
@@ -125,8 +148,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }
 
@@ -137,8 +160,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }
 
@@ -157,8 +180,8 @@
                      ' -o ' . $work."/".$wbpn."/result.txt";
         }
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }   
 
@@ -169,8 +192,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }  
 
@@ -181,8 +204,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       }             
 
@@ -193,8 +216,8 @@
                      ' -i ' . $user_htmlfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # save the command used
-        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
         $output = shell_exec($command);
       } 
 
