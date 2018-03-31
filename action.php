@@ -94,9 +94,13 @@
             print_r("two or more text files to analyze in zip file. exiting.");
             exit(1);
         }
+        # allow .html or .htm
         foreach (glob($work."/".$wbpn."/*.html") as $filename) {
            $user_htmlfile=$filename;
         }
+        foreach (glob($work."/".$wbpn."/*.htm") as $filename) {
+           $user_htmlfile=$filename;
+        }        
       }
 
       # the radio buttons tell us what test they want.
@@ -109,7 +113,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        #echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }
 
@@ -120,7 +125,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        #echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }
 
@@ -131,7 +137,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }
 
@@ -150,7 +157,8 @@
                      ' -o ' . $work."/".$wbpn."/result.txt";
         }
         $command = escapeshellcmd($scommand);
-        # echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }   
 
@@ -161,7 +169,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }  
 
@@ -172,7 +181,8 @@
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       }             
 
@@ -183,7 +193,8 @@
                      ' -i ' . $user_htmlfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
-        # echo "command: ". $command . "<br/>";
+        # save the command used
+        file_put_contents($work."/".$wbpn."/command.txt", $command."\n");
         $output = shell_exec($command);
       } 
 
