@@ -131,7 +131,7 @@ class Ppgutc(object):
              r'\b[Tt]he[\.\,\?\'\"\;\:\!\@\#\$\%\^\&\(\)]'),
             (61, "r", "2,2", "standalone numeral zero in text", r'\s0\s'),
             (62, "r", "2,2", "standalone numeral one in text", r'\b1\b'),
-            (63, "r", "2,2", "mixed numereral and alphabetic",
+            (63, "r", "2,2", "mixed numeral and alphabetic",
              r'([A-Za-z]\d)|(\d[A-Za-z])'),
             (64, "r", "2,2", "ampersand in text", r'&'),
             (65, "r", "2,2", "unconverted \"--\" to \"—\"", r'(\w--\w)|(\w--)|(--\w)'),
