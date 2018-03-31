@@ -80,12 +80,19 @@
         $user_textfile=$target_name;
       }
       if ($file_ext=="zip") {
+        $textfilecount=0;
         foreach (glob($work."/".$wbpn."/*.txt") as $filename) {
             if (basename($filename)=="goodwords.txt"){
                 $user_wordfile=$filename;
             } else {
                 $user_textfile=$filename;
             }
+            $textfilecount++;
+        }
+        if ($textfilecount > 1 && $user_wordfile == "") {
+            # ambiguous which file is text file to check
+            print_r("two or more text files to analyze in zip file. exiting.");
+            exit(1);
         }
         foreach (glob($work."/".$wbpn."/*.html") as $filename) {
            $user_htmlfile=$filename;
