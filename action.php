@@ -224,7 +224,7 @@
       echo "<!doctype html>";
       echo "<html lang=\"en\">";
       echo "<head>";
-      echo "  <link rel='stylesheet' type='text/css' href='workbench.css'>";
+      echo "  <link rel='stylesheet' type='text/css' href='dpwb.css'>";
       echo "</head>";
       echo "<body>";
       echo "<p><b>Post-Processing Workbench Results</b></p>";

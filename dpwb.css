@@ -62,13 +62,13 @@ th { background-color: tan; }
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: Helvetica, Arial, sans-serif }
-h1 {font-size:120%;}
+h1 {font-size:110%;}
 h2 {font-size:90%;}
 h3 {font-size:90%;}
 h4 {font-size:90%;}
 h5 {font-size:90%;}
 h6 {font-size:80%; font-weight:bold; color:rgb(200,200,200);}
-h1.rf { text-align: center; color: black; background-color: #c0d0e0; margin-top: 10px; }
+h1.rf { font-size:120%; text-align: center; color: black; background-color: #c0d0e0; margin-top: 10px; }
 h2.rf { text-align: left; color: black; background-color: #c8d8e8; }
 h3.rf { text-align: left; color: black; background-color: #d0e0f0; font-weight: normal; margin-top:1.5em; }
 h4.rf { text-align: left; color: white; font-weight: normal; background-color: #778899; }
