@@ -26,7 +26,7 @@ class Ppppv(object):
         self.sdir = "" # to find the images
         self.encoding = ""
         self.NOW = strftime("%Y-%m-%d %H:%M:%S", gmtime()) + " GMT"
-        self.VERSION = "2018.03.30"
+        self.VERSION = "2018.03.31"
 
     # display (fatal) error and exit
     def fatal(self, message):
@@ -184,9 +184,9 @@ class Ppppv(object):
             if m:  # report only first five
                 if ast_count < 5:
                     self.ap("  " + line)
-                    ast_count += 1
-                else:
-                    self.ap("  ...")
+                if ast_count == 5:
+                    self.ap("  ... more")
+                ast_count += 1
         # if no errors, report
         if ast_count == 0:
             self.ap("  no errors")
