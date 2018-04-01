@@ -63,7 +63,7 @@
         # create a separate folder for each workbench project
         mkdir($work."/".$wbpn, 0755);
 
-        $s = $date." ".$_POST['requested_test']." ".$ipaddress."\n";
+        $s = $date." ".$_POST['requested_test']." ".$wbpn." ".$ipaddress."\n";
         file_put_contents($work."/access.log", $s, FILE_APPEND);
 
         # if a zip file was uploaded, burst it in the project folder
@@ -126,13 +126,35 @@
         }        
       }
 
+      # isolate the user options, if any
+      $useropts="";
+      if ($_POST['options'] != "") {
+        $useropts=$_POST['options'];
+        # this should be caught before here but be sure.
+        if (preg_match('/[^a-z0-9-, =]/', $useropts)) {
+            print_r("illegal characters in user options string");
+            exit(1);
+        }
+        # make sure they haven't redefined input or output
+        # check for -i, --infile, -o, --outfile
+        if (strpos($useropts, '-i') !== false) {
+            print_r("you cannot change the input filename");
+            exit(1);
+        }
+        if (strpos($useropts, '-o') !== false) {
+            print_r("you cannot change the output filename");
+            exit(1);
+        }
+      }
+
       # the radio buttons tell us what test they want.
       # dispatch here...
 
       if ($_POST["requested_test"]=="ppgutc") {
 
         # run the program here
-        $scommand = 'python3 ppgutc.py' .
+        $scommand = 'python3 ppgutc.py ' .
+                     $useropts .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
