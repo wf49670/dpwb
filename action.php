@@ -153,7 +153,7 @@
       if ($_POST["requested_test"]=="ppgutc") {
 
         # run the program here
-        $scommand = 'python3 ppgutc.py ' .
+        $scommand = 'python3 ppgutc/ppgutc.py ' .
                      $useropts .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
@@ -166,7 +166,7 @@
       if ($_POST["requested_test"]=="pplev") {
 
         # run the program here
-        $scommand = 'python3 pplev.py' .
+        $scommand = 'python3 pplev/pplev.py' .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
@@ -178,7 +178,7 @@
       if ($_POST["requested_test"]=="ppsmq") {
 
         # run the program here
-        $scommand = 'python3 ppsmq.py' .
+        $scommand = 'python3 ppsmq/ppsmq.py' .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
@@ -191,13 +191,13 @@
 
         # run the program here
         if ($user_wordfile!=""){
-            $scommand = 'python3 ppspell.py' .
+            $scommand = 'python3 ppspell/ppspell.py' .
                      ' -i ' . $user_textfile .
                      ' -g ' . $user_wordfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
 
         } else {
-            $scommand = 'python3 ppspell.py' .
+            $scommand = 'python3 ppspell/ppspell.py' .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         }
@@ -210,7 +210,7 @@
       if ($_POST["requested_test"]=="ppjeeb") {
 
         # run the program here
-        $scommand = 'python3 ppjeeb.py' .
+        $scommand = 'python3 ppjeeb/ppjeeb.py' .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
@@ -222,7 +222,7 @@
       if ($_POST["requested_test"]=="pptxt") {
 
         # run the program here
-        $scommand = 'python3 pptxt.py' .
+        $scommand = 'python3 pptxt/pptxt.py' .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
@@ -234,7 +234,7 @@
       if ($_POST["requested_test"]=="ppppv") {
 
         # run the program here
-        $scommand = 'python3 ppppv.py' .
+        $scommand = 'python3 ppppv/ppppv.py' .
                      ' -i ' . $user_htmlfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
         $command = escapeshellcmd($scommand);
