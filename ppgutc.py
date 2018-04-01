@@ -20,6 +20,7 @@ class Ppgutc(object):
         self.srcfile = args['infile']
         self.outfile = args['outfile']
         self.debug = args['debug']
+        self.nolist = args['nolist']
         # particular to ppgutc
         self.wb = []
         self.encoding = ""
@@ -275,7 +276,7 @@ class Ppgutc(object):
                     s += "{:6d} {:s}\r\n".format(i, t)
                     count += 1
 
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -304,7 +305,7 @@ class Ppgutc(object):
                     # s += "  " + self.add_report_s(hit.span(), "3,3", "")
                     s += "  " + self.add_report_s(hit.span(), "3,3")
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -330,7 +331,7 @@ class Ppgutc(object):
                     # s += "  " + self.add_report_s(hit.span(), "3,3", "")
                     s += "  " + self.add_report_s(hit.span(), "3,3")
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -356,7 +357,7 @@ class Ppgutc(object):
                     # s += "  " + self.add_report_s(hit.span(), "3,3", "")
                     s += "  " + self.add_report_s(hit.span(), "3,3")
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -437,7 +438,7 @@ class Ppgutc(object):
                         s += "{:6d} {:s}\r\n".format(i, self.wb[i])
                         count += 1
             i += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -463,7 +464,7 @@ class Ppgutc(object):
                     # s += "  " + self.add_report_s(hit.span(), "3,3", "")
                     s += "  " + self.add_report_s(hit.span(), "3,3")
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -490,7 +491,7 @@ class Ppgutc(object):
                         line = re.sub("({})".format(hb), r"<\1>", line)
                         s += "{:>6} {}\r\n".format(i, line)
                         count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -517,7 +518,7 @@ class Ppgutc(object):
                         line = re.sub("({})".format(hb), r"<\1>", line)
                         s += "{:>6} {}\r\n".format(i, line)
                         count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -543,7 +544,7 @@ class Ppgutc(object):
                         line = re.sub("({})".format(hb), r"<\1>", line)
                         s += "{:>6} {}\r\n".format(i, line)
                         count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -607,7 +608,7 @@ class Ppgutc(object):
                 if self.showall or count < 5:
                     s += "{:>6} {}\r\n".format(i+1, line)
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
         return s
 
@@ -630,7 +631,7 @@ class Ppgutc(object):
                 if self.showall or count < 5:
                     s += "{:>6} {}\r\n".format(i+1, line)
                     count += 1
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
 
         return s
@@ -724,7 +725,7 @@ class Ppgutc(object):
                 has_ap = True
                 break
 
-        if self.showall and not (has_tc and has_ap):
+        if self.showall and not self.nolist and not (has_tc and has_ap):
             self.areport("\r\ntest {}: {} [no reports]".format(tn, td))
 
         if has_tc and has_ap:
@@ -738,7 +739,7 @@ class Ppgutc(object):
         has_curly = re.search("[‘“’”]", self.text)
         has_straight = re.search("[\"']", self.text)
 
-        if self.showall and not (has_curly and has_straight):
+        if self.showall and not self.nolist and not (has_curly and has_straight):
             self.areport("test {}: {} [no reports]".format(tn, td))
 
         if has_straight and has_curly:
@@ -773,7 +774,7 @@ class Ppgutc(object):
                     stmp += "       {}\r\n".format(self.wb[i+1])
                 count += 1
 
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
 
         # if there were a lot, put a short message
@@ -811,7 +812,7 @@ class Ppgutc(object):
         if very_long_count > 0:
             s += "       {} lines are very long\r\n".format(very_long_count)
 
-        if self.showall and not reported:
+        if self.showall and not self.nolist and not reported:
             self.areport("test {}: {} [no reports]".format(tn, td))
 
         return s
@@ -995,7 +996,7 @@ class Ppgutc(object):
                         if self.showall or count < 5:
                             self.add_report(hit.span(), t3[2])
                             count += 1
-                if self.showall and not reported:
+                if self.showall and not self.nolist and not reported:
                     self.areport(
                         "test {}: {} [no reports]".format(t3[0], t3[3]))
             # 'm' means call a method
@@ -1021,6 +1022,8 @@ def parse_args():
                         help='skip indicated tests', default="")
     parser.add_argument('-a', '--showall',
                         help='show all results', action='store_true')
+    parser.add_argument('-n', '--nolist',
+                        help='do not list tests that pass', action='store_true')    
     args = vars(parser.parse_args())
     return args
 
