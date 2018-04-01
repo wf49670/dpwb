@@ -57,12 +57,22 @@ HEAD;
         $input = $config["input"];
         $output = $config["output"];
 
+        $options = '';
+        if(@$config["takes_options"])
+        {
+            $options = '
+                User options: <input type="text" id="options" name="options"
+                placeholder="click on program name for options"
+                pattern="[a-z0-9-, =]+" size="30"><br>';
+        }
+
         echo <<<ROW
     <tr>
       <td><input type="radio" name="requested_test" value="$module"></td>
       <td><a href='?module=$module' target="_blank">$module</a><br>$description</td>
       <td>
         Input: $input<br>
+        $options
         Output: $output
       </td>
     </tr>

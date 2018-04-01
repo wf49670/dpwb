@@ -2,11 +2,9 @@
 
 $module_config["ppgutc"] = array(
     "description" => "gutcheck-type tests",
-    "input" => 'text file<br>
-        User options: <input type="text" id="options" name="options"
-          placeholder="click on program name for options"
-          pattern="[a-z0-9-, =]+" size="30">',
+    "input" => 'text file',
     "output" => "report file listed by test number",
+    "takes_options" => TRUE,
     "documentation" => <<<DOCS
   <p>The ppgutc program runs extensive checks on a text file that has been prepared for submission
   to Project Gutenberg. The user uploads a text file or zip file
