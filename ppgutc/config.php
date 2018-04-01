@@ -1,20 +1,13 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-    <style type="text/css">
-       th { font-size:x-small; }
-       tt { background-color:#FFFF33; border:1px solid silver;}
-     </style>
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: ppgutc</h2>
-
+$module_config["ppgutc"] = array(
+    "description" => "gutcheck-type tests",
+    "input" => 'text file<br>
+        User options: <input type="text" id="options" name="options"
+          placeholder="click on program name for options"
+          pattern="[a-z0-9-, =]+" size="30">',
+    "output" => "report file listed by test number",
+    "documentation" => <<<DOCS
   <p>The ppgutc program runs extensive checks on a text file that has been prepared for submission
   to Project Gutenberg. The user uploads a text file or zip file
   containing a text file, clicks Submit, waits for the test to run and then downloads
@@ -29,7 +22,7 @@
       for the he/be checks. It is strongly recommended that you run ppjeeb, a Python
     port of jeebies, for he/be checks in addition to the ppgutc checks.</p>
 
-    <h3 class='rf'>User options for ppgutc</h3>
+    <h2>User options for ppgutc</h2>
 
     <p>On the Post Processing Workbench main page there is a place for the user to enter "User options" for ppgutc.
       You do not have to enter anything in this box. Default values are appropriate for many people. However if
@@ -73,6 +66,5 @@ Here are some examples:</p>
   <tr><td><tt>-a -n</tt></td><td>Show all reports for any test that fails and don't list tests that passed.</td></tr>
   <tr><td><tt>--skiptests=14 -n</tt></td><td>Skip test 14. Don't list tests that passed.</td></tr>
 </table>
-
-  </body>
-  </html>
+DOCS
+);
