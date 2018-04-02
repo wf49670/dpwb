@@ -9,7 +9,7 @@ if ( trim($_GET["pass"]) != trim($s) ) {
     exit(); # exit quietly    
 }
 
-# http://www.pgdp.org/~rfrank/maint.php?pass=velvet
+# http://www.pgdp.org/~rfrank/maint.php?pass=passwordS
 #
 # typically run this to clear the working directory
 # and the access.log after doing a tar and save offsite
