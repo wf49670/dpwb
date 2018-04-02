@@ -3,6 +3,7 @@
 $module_config["ppspell"] = array(
     "description" => "spell checker",
     "input" => "text file or Zip file of text file+goodwords.txt",
+    "takes_options" => TRUE,
     "output" => "suspect words with frequency and context<br><small>Please note: more accurate results if updated goodwords.txt file included in zip</small>",
     "documentation" => <<<DOCS
   <p>The ppspell program runs an intelligent spellcheck on a text file. It uses a combination
@@ -21,6 +22,28 @@ $module_config["ppspell"] = array(
       UTF-8 goodwords.txt file. You are encouraged to review and edit the goodwords.txt
      file before uploading it.</p>
 
-      <p>Currently the dictionary used is aspell's en_US. Others may be available based on demand.</p>
+      <p>Currently the dictionary used is aspell's "en_us". Others are available using
+      the User options.</p>
+    <h2>User options for ppspell</h2>
+
+    <p>On the Post Processing Workbench main page there is a place for the user to enter "User options" for this program.
+      You do not have to enter anything in this box. Default values are appropriate for many people. However if
+    you want to customize the report, here are the options and some samples of how to use them.</p>
+
+    <table style='width:90%'>
+      <tr>
+        <th>SHORT FORM</th>
+        <th>LONG FORM</th>
+        <th>DESCRIPTION</th>
+      </tr>
+      <tr>
+        <td>-l</td><td>--lang</td><td>User specified language (one of "en", "de", "es", "fr", "en_us"). Default
+        is "en_us"</td>
+      </tr>
+    </table>
+
+    <p>Options are entered into the User options box separated by a space.
+    You can only enter a letters, numbers, a hyphen, comma, space, underscore or equal sign
+    to create your user options line.</p>      
 DOCS
 );

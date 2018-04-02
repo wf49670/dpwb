@@ -115,6 +115,10 @@ function output_workbench_menu($module_configs)
 <p>Welcome to the Post-Processing Workbench.
 Here you may upload a text or .zip file and select, one by one, the tests you would like it to undergo.</p>
 
+<p style='color:red'>PLEASE NOTE: User options field is temporarily broken. For now, put whatever options
+you want to use for your desired test, whatever it is,
+into the User options field for ppscan at the bottom.</p>
+
 <div>Instructions:</div>
 <ol style='margin-top:0'>
     <li>Drag and drop your text or .zip file onto the "Choose File" or "Browse" button or click the button to select your file via a dialogue box. Zip files should contain the HTML/text/image etc. files prepared as you would to submit to PPV or to Project Gutenberg and other files (such as goodwords.txt) appropriate to a particular test.</li>

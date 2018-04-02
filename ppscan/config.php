@@ -47,14 +47,10 @@ the options for this tool:</p>
       including the description, to the end of the results file
     </td>
   </tr>
-  <tr>
-    <td style='width:3em'>-w</td>
-    <td style='width:8em'>--wfile</td>
-    <td>
-      This option allows the user to use a different wordlist
-      than the default "en_us". Choices are "en", "de", "es", "fr", "en_us"
-    </td>
-  </tr>  
+      <tr>
+        <td>-l</td><td>--lang</td><td>User specified language (one of "en", "de", "es", "fr", "en_us"). Default
+        is "en_us"</td>
+      </tr>
 </table>
 DOCS
 );
