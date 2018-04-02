@@ -7,7 +7,8 @@ $modules = array(
     "ppspell",
     "ppsmq",
     "pptxt",
-    "ppppv",
+    "ppppv"
+    # "ppscan"
 );
 
 $module_configs = load_module_configs($modules);
@@ -117,7 +118,7 @@ Here you may upload a text or .zip file and select, one by one, the tests you wo
 <div>Instructions:</div>
 <ol style='margin-top:0'>
     <li>Drag and drop your text or .zip file onto the "Choose File" or "Browse" button or click the button to select your file via a dialogue box. Zip files should contain the HTML/text/image etc. files prepared as you would to submit to PPV or to Project Gutenberg and other files (such as goodwords.txt) appropriate to a particular test.</li>
-<li>Once your file has been uploaded it's name will appear beside the button.</li>
+<li>Once your file has been uploaded its name will appear beside the button.</li>
 <li>Select a test from the list and press the "Submit" button.</li>
 <li>Once the test is completed (it can take a minute or more to complete), you may view or download the test results.</li>
 <li>To return to the test selection screen, simply use your "Back" button. You can then select and run another test.</li>
