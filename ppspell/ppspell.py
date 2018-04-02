@@ -60,7 +60,7 @@ class Ppspell(object):
         self.wb = [s.rstrip() for s in self.wb]
 
     # load dictionary
-    # disctionary is already UTF-8
+    # dictionary is already UTF-8
     def loadDict(self):
         mdict = []
         try:

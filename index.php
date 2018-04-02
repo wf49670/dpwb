@@ -7,8 +7,8 @@ $modules = array(
     "ppspell",
     "ppsmq",
     "pptxt",
-    "ppppv"
-    # "ppscan"
+    "ppppv",
+    "ppscan"
 );
 
 $module_configs = load_module_configs($modules);
