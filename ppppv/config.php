@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: ppppv</h2>
-
+$module_config["ppppv"] = array(
+    "description" => "checks for PPV",
+    "input" => "zip file that includes HTML and images folder",
+    "output" => "results file",
+    "documentation" => <<<DOCS
   <p>The ppppv program attempts to automate some of the checks done
   during Post Processing Verification ("PPV"). It does not run all the
   necessary checks but either runs the check or reminds the user to make
@@ -22,6 +16,5 @@
   Similarly, PPVers should check the image dimensions and file sizes,
   verify they are all used and that there are no extra files in the
   images folder, etc. These tasks are well-suited to ppppv.</p>
-
-  </body>
-  </html>
+DOCS
+);

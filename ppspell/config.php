@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: ppspell</h2>
-
+$module_config["ppspell"] = array(
+    "description" => "spell checker",
+    "input" => "text file or Zip file of text file+goodwords.txt",
+    "output" => "suspect words with frequency and context<br><small>Please note: more accurate results if updated goodwords.txt file included in zip</small>",
+    "documentation" => <<<DOCS
   <p>The ppspell program runs an intelligent spellcheck on a text file. It uses a combination
     of filtering hueristics backed by the aspell dictionaries for English and several
     other languages.</p>
@@ -28,5 +22,5 @@
      file before uploading it.</p>
 
       <p>Currently the dictionary used is aspell's en_US. Others may be available based on demand.</p>
-  </body>
-  </html>
+DOCS
+);

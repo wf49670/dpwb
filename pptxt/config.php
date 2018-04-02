@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: pptxt</h2>
-
+$module_config["pptxt"] = array(
+    "description" => "text checks for post-processing",
+    "input" => "text file",
+    "output" => "results file sorted by test",
+    "documentation" => <<<DOCS
   <p>The pptxt program runs many diverse tests on a text file. Here is a partial list of 
   the pptxt tests:</p>
   <ul>
@@ -28,6 +22,5 @@
   </ul>
 
   <p>Source is Latin-1 or UTF-8 text file. Result is the pptxt report.</p>
-
-  </body>
-  </html>
+DOCS
+);

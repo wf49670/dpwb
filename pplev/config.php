@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: pplev</h2>
-
+$module_config["pplev"] = array(
+    "description" => "edit distance checks",
+    "input" => "text file",
+    "output" => "list of edit-distance 1 suspect words, in context",
+    "documentation" => <<<DOCS
   <p>The pplev program does Levenshtein or "edit-distance" checks on a
     UTF-8 text file. The Levenshtein distance between two words
     is the minimum number of single-character edits (insertions,
@@ -23,6 +17,5 @@
   <pre>Marañon (1) <-> Marañón (9)
       12077: rivers Uriaparia and Marañon, and this one of La Plata. I answered
       1047: Gran Chaco, of Alvarado and Mercadillo in the valleys of the Marañón</pre>
-
-  </body>
-  </html>
+DOCS
+);

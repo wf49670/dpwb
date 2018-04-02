@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Post-Processing Workbench</title>
-    <link rel="stylesheet" type="text/css" href="dpwb.css">
-  </head>
+<?php
 
-  <body>
-
-  <h2 class='rf'>Workbench Component: ppsmq</h2>
-
+$module_config["ppsmq"] = array(
+    "description" => "Smart quote text reformatter",
+    "input" => "text file with \"straight\" quotes",
+    "output" => "text file with typographer's quotes",
+    "documentation" => <<<DOCS
   <p>The ppsmq program attempts to convert a text file with straight quotes into one
   with curly quotes. It only makes changes it's pretty certain are
   correct. It will flag those it is uncertainabout with the "@"
@@ -33,6 +27,5 @@
   to protect them. The process is the same as in the previous paragraph.
   Then there is an added step to replace all "∮" with single quotes and
   all "∯" with double quotes to restore the HTML tags.</p>
-
-  </body>
-  </html>
+DOCS
+);
