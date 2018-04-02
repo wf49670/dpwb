@@ -36,7 +36,7 @@ the options for this tool:</p>
     <td>
       This option causes ppscan to put a short descriptive 4-letter mnemonic at
       any place in question instead of the simple '@' mark. For example, a
-      user seeing "@CODQ" would know to look for Consecutive Open Double QUotes.
+      user seeing "@CODQ" would know to look for Consecutive Open Double Quotes.
     </td>
   </tr>
   <tr>
@@ -52,7 +52,7 @@ the options for this tool:</p>
     <td style='width:8em'>--wfile</td>
     <td>
       This option allows the user to use a different wordlist
-      than the default en_US. Choices are "en", "de", "es", "fr", "en_us"
+      than the default "en_us". Choices are "en", "de", "es", "fr", "en_us"
     </td>
   </tr>  
 </table>

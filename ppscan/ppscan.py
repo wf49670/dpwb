@@ -111,7 +111,7 @@ class Ppscan(object):
         self.bothsq = False # true if both straight and curly quotes found
         self.OP = r"(?:^|[\s‘“—\-_])"  # define left edge of word
         self.CP = r"(?:[ !;:'\".,\?'’—\-\s]|$)" # define right edge of a word
-        self.dictloc = "../wordlists/master." + args['wfile'] # dictonary wordlist file
+        self.dictloc = "wordlists/master." + args['wfile'] # dictonary wordlist file
         self.tcqlocs = []  # temporary close quote locations
         self.stcqlocs = []  # saved temporary close quote locations
 
@@ -159,7 +159,7 @@ class Ppscan(object):
                     self.wlf[word[1:]] = '1'
                     self.wll[word[:-1]] = '1'
         else:
-            self.fatal("no dictionary file found")
+            self.fatal("no dictionary file found at {}".format(my_file))
 
     def check_mixed(self):
         curly = False

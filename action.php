@@ -131,7 +131,7 @@
       if ($_POST['options'] != "") {
         $useropts=$_POST['options'];
         # this should be caught before here but be sure.
-        if (preg_match('/[^a-z0-9-, =]/', $useropts)) {
+        if (preg_match('/[^a-z0-9-, =_]/', $useropts)) {
             print_r("illegal characters in user options string");
             exit(1);
         }
@@ -166,7 +166,7 @@
       if ($_POST["requested_test"]=="ppscan") {
 
         # run the program here
-        $scommand = 'python3 ppgutc/ppgutc.py ' .
+        $scommand = 'python3 ppscan/ppscan.py ' .
                      $useropts .
                      ' -i ' . $user_textfile .
                      ' -o ' . $work."/".$wbpn."/result.txt";
