@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-ppgutc.py for DP Post-processor's Workbench
-license: MIT
+ppgutc.py
+MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import re

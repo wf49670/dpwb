@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-ppspell.py for Post-Processing Workbench
-license: MIT
+  ppspell.py
+  MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import re

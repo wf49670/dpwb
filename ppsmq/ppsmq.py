@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-ppsmq.py for DP Post-processor's Workbench
-license: MIT
-version: 2018.03.22
+  ppsmq.py
+  MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import argparse

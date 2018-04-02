@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-ppjeeb.py for Post-Processing Workbench
-license: MIT
+  ppjeeb.py
+  MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import sys

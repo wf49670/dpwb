@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-pplev.py for Post-processor's Workbench
-license: MIT
+  pplev.py
+  MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import re

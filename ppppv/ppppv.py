@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-ppppv.py for Post-Processing Workbench
-license: MIT
+  ppppv.py
+  MIT license (c) 2018 Asylum Computer Services LLC
 """
 
 import re
