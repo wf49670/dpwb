@@ -163,6 +163,19 @@
         $output = shell_exec($command);
       }
 
+      if ($_POST["requested_test"]=="ppscan") {
+
+        # run the program here
+        $scommand = 'python3 ppgutc/ppgutc.py ' .
+                     $useropts .
+                     ' -i ' . $user_textfile .
+                     ' -o ' . $work."/".$wbpn."/result.txt";
+        $command = escapeshellcmd($scommand);
+        # save the command used and user IP address
+        file_put_contents($work."/".$wbpn."/command.txt", "user IP: ".$ipaddress."\ncommand: ".$command."\n");
+        $output = shell_exec($command);
+      }
+
       if ($_POST["requested_test"]=="pplev") {
 
         # run the program here
